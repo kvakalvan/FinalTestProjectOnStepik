@@ -1,4 +1,6 @@
 import math
+
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.common.exceptions import NoAlertPresentException
@@ -14,6 +16,11 @@ class BasePage():
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
+
+    def go_to_basket_page(self):
+        button = self.browser.find_element(By.XPATH, "//*[@id='default']/header/div[1]/div/div[2]/span/a")
+        button.click()
+
 
     def is_not_element_present(self, how, what, timeout=4):
         try:
